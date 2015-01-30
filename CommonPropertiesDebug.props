@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <CppLib>C:\Users\Tony-Laptop\Documents\cpplib</CppLib>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)$(Configuration)Out\</OutDir>
+    <IncludePath>$(CppLib)\AntTweakBar\include;$(CppLib)\glew-1.11.0\include;$(CppLib)\assimp-3.1.1\include;$(CppLib)\freeglut\include\;$(CppLib)\luapath\include\;$(CppLib)\glm\;$(CppLib)\SOIL\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>C:\Users\Tony-Laptop\Documents\cpplib\AntTweakBar\lib\AntTweakBar.lib;C:\Users\Tony-Laptop\Documents\cpplib\assimp-3.1.1\build\code\Release\assimp.lib;C:\Users\Tony-Laptop\Documents\cpplib\freeglut\lib\freeglut.lib;C:\Users\Tony-Laptop\Documents\cpplib\glew-1.11.0\build\Debug\libglew_sharedd.lib;C:\Users\Tony-Laptop\Documents\cpplib\luapath\lib\Debug\luapath.lib;C:\Users\Tony-Laptop\Documents\cpplib\SOIL\projects\VC9\Debug\SOIL.lib;glu32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="CppLib">
+      <Value>$(CppLib)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
