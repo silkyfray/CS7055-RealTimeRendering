@@ -1,4 +1,4 @@
-#version 400 
+#version 440
  
 in Data {
     vec4 color;

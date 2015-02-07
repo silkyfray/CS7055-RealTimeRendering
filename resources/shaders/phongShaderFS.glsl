@@ -1,4 +1,4 @@
-#version 400
+#version 440
  
 
 uniform vec4 specular;
@@ -13,30 +13,26 @@ in Data {
 } DataIn;
  
 out vec4 colorOut;
- 
+
 void main() {
  
-    vec4 finalDiffuse = diffuse;
+    // set the specular term to black
+    vec4 spec = vec4(0.0);
+ 
     // normalize both input vectors
     vec3 n = normalize(DataIn.normal);
     vec3 e = normalize(vec3(DataIn.eye));
-    vec3 l = normalize(l_dir);
-    float intensity = max(dot(n,l), 0.0);
+ 
+    float intensity = max(dot(n,l_dir), 0.0);
  
     // if the vertex is lit compute the specular color
     if (intensity > 0.0) {
-	    // Discretize the intensity, based on a few cutoff points
-	    if(intensity > 0.98f)
-        {
-            finalDiffuse = vec4(0.8f);
-        }
-		else if (intensity > 0.5f)
-		    intensity = 0.7f;
-		else if (intensity > 0.05)
-		    intensity = 0.35f;
-		else
-		    intensity = 0.01f;
+        // compute the half vector
+        vec3 h = normalize(l_dir + e);  
+        // compute the specular term into spec
+        float intSpec = max(dot(h,n), 0.0);
+        spec = specular * pow(intSpec,shininess);
     }
-    colorOut = max(intensity *  finalDiffuse, ambient);
+    colorOut = max(intensity *  diffuse + spec, ambient);
     //colorOut = vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }
