@@ -5,7 +5,6 @@
     <CppLib>C:\Users\Tony-Laptop\Documents\cpplib</CppLib>
   </PropertyGroup>
   <PropertyGroup>
-    <OutDir>$(ProjectDir)$(Configuration)Out\</OutDir>
     <IncludePath>$(CppLib)\AntTweakBar\include;$(CppLib)\glew-1.11.0\include;$(CppLib)\assimp-3.1.1\include;$(CppLib)\freeglut\include\;$(CppLib)\luapath\include\;$(CppLib)\glm\;$(CppLib)\SOIL\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup>
