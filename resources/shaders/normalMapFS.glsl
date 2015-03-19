@@ -13,7 +13,7 @@ uniform bool renderDiffuse;
 uniform bool renderNormalMap;
 
 struct LightInfo {
-	vec4 Position; // Light position in eye coords.
+	vec3 Direction; // Light position in eye coords.
 	vec3 Intensity; // A,D,S intensity
 };
 uniform LightInfo Light;

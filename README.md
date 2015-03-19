@@ -7,3 +7,7 @@ Lab 1
 Lab 2
 --------
 [Youtube video](https://www.youtube.com/watch?v=U0JREi_jbCQ).
+
+Lab 3
+--------
+[Youtube video](https://www.youtube.com/watch?v=erhHqXGUOZ0).
