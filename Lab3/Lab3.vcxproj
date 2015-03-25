@@ -90,6 +90,37 @@
     <ClCompile Include="SQTTransform.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\shaders\blinnPhongFS.glsl" />
+    <None Include="..\resources\shaders\blinnPhongTextureFS.glsl" />
+    <None Include="..\resources\shaders\blinnPhongTextureVS.glsl" />
+    <None Include="..\resources\shaders\blinnPhongVS.glsl" />
+    <None Include="..\resources\shaders\blueFragmentShader.glsl" />
+    <None Include="..\resources\shaders\celOutlineShaderFS.glsl" />
+    <None Include="..\resources\shaders\celOutlineShaderVS.glsl" />
+    <None Include="..\resources\shaders\celShaderFS.glsl" />
+    <None Include="..\resources\shaders\celShaderVS.glsl" />
+    <None Include="..\resources\shaders\colorFragmentShader.glsl" />
+    <None Include="..\resources\shaders\cookTorFS.glsl" />
+    <None Include="..\resources\shaders\cookTorVS.glsl" />
+    <None Include="..\resources\shaders\flatShaderFS.glsl" />
+    <None Include="..\resources\shaders\flatShaderVS.glsl" />
+    <None Include="..\resources\shaders\gouraudShaderFS.glsl" />
+    <None Include="..\resources\shaders\gouraudShaderVS.glsl" />
+    <None Include="..\resources\shaders\normalMapFS.glsl" />
+    <None Include="..\resources\shaders\normalMapVS.glsl" />
+    <None Include="..\resources\shaders\phongShaderFS.glsl" />
+    <None Include="..\resources\shaders\phongShaderVS.glsl" />
+    <None Include="..\resources\shaders\reflectRefract2FS.glsl" />
+    <None Include="..\resources\shaders\reflectRefract2VS.glsl" />
+    <None Include="..\resources\shaders\reflectRefractFS.glsl" />
+    <None Include="..\resources\shaders\reflectRefractNormalMapFS.glsl" />
+    <None Include="..\resources\shaders\reflectRefractNormalMapVS.glsl" />
+    <None Include="..\resources\shaders\reflectRefractVS.glsl" />
+    <None Include="..\resources\shaders\simpleVertexShader.glsl" />
+    <None Include="..\resources\shaders\textureCubeFS.glsl" />
+    <None Include="..\resources\shaders\textureCubeVS.glsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

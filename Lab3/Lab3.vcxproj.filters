@@ -84,4 +84,93 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\shaders\blinnPhongFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\blinnPhongTextureFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\blinnPhongTextureVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\blinnPhongVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\blueFragmentShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\celOutlineShaderFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\celOutlineShaderVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\celShaderFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\celShaderVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\colorFragmentShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\cookTorFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\cookTorVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\flatShaderFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\flatShaderVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\gouraudShaderFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\gouraudShaderVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\normalMapFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\normalMapVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\phongShaderFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\phongShaderVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\reflectRefract2FS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\reflectRefract2VS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\reflectRefractFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\reflectRefractNormalMapFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\reflectRefractNormalMapVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\reflectRefractVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\simpleVertexShader.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\textureCubeFS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\shaders\textureCubeVS.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
