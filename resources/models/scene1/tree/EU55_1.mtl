@@ -1,0 +1,75 @@
+
+
+newmtl default_Mat
+illum 2
+Kd 0.800000 0.800000 0.800000
+
+newmtl EU55trk2
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55trk2.tif
+bump EU55trk2.tif
+
+newmtl EU55bud1
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55bud1.tif
+map_d EU55bud1.tif
+
+newmtl EU55twg2
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55twg2.tif
+bump EU55twg2.tif
+
+newmtl EU55brn2
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55brn2.tif
+map_d EU55brn2.tif
+
+newmtl EU55bud2
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55bud2.tif
+map_d EU55bud2.tif
+
+newmtl EU55lef1
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55lef1.tif
+map_d EU55lef1.tif
+
+newmtl EU55brn1
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55brn1.tif
+map_d EU55brn1.tif
+
+newmtl EU55brk2
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55brk2.tif
+bump EU55brk2.tif
+
+newmtl EU55twg1
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55twg1.tif
+bump EU55twg1.tif
+
+newmtl EU55rts2
+Ns 50.781250
+illum 2
+Kd 0.700000 0.700000 0.700000
+map_Kd EU55rts2.tif
+bump EU55rts2.tif

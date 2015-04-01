@@ -149,7 +149,7 @@ void Model::renderCel(ShaderProgram *celShader, ShaderProgram *celOutline, const
 	//{
 	//	(*it)->render(celOutline);
 	//}
-	glFrontFace(GL_CCW);
+	//glFrontFace(GL_CCW);
 	glUseProgram(celShader->m_Id);
 	//render the cel shading second
 	glUniformMatrix4fv(celShader->getVariableLocation("MVP"), 1, GL_FALSE, glm::value_ptr(MVP));
@@ -397,97 +397,6 @@ void Model::renderReflectRefractNormalMap(ShaderProgram *shader, const CubeMap &
 
 }
 
-void Model::renderWatercolor(const WatercolorInfo &watercolorInfo,
-	const glm::mat4 &modelMatrix, const glm::mat4 &viewMatrix, const glm::mat4 &projectionMatrix, glm::vec3 lightDirectionWorld) const
-{
-
-	glm::mat4 modelViewMatrix = viewMatrix * modelMatrix;
-	glm::mat4 MVP = projectionMatrix * modelViewMatrix;
-	glm::mat3 normalMatrix = glm::mat3(glm::transpose(glm::inverse(modelViewMatrix)));
-	std::vector<Mesh*>::const_iterator it = m_Meshes.begin();
-
-	/////////////////////////////////////////////////////
-	// Bind to framebuffer and draw to color texture 
-	// as we normally would.
-	// //////////////////////////////////////////////////
-	glBindFramebuffer(GL_FRAMEBUFFER, watercolorInfo.frameBuffer);
-	// Clear all attached buffers        
-	glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // We're not using stencil buffer so why bother with clearing?
-
-	glEnable(GL_DEPTH_TEST);
-
-	glUseProgram(watercolorInfo.abstractionShader->m_Id);
-	//render the cel shading second
-	glUniformMatrix4fv(watercolorInfo.abstractionShader->getVariableLocation("MVP"), 1, GL_FALSE, glm::value_ptr(MVP));
-	glUniformMatrix3fv(watercolorInfo.abstractionShader->getVariableLocation("normalMatrix"), 1, GL_FALSE, glm::value_ptr(normalMatrix));
-	glUniformMatrix4fv(watercolorInfo.abstractionShader->getVariableLocation("viewModelMatrix"), 1, GL_FALSE, glm::value_ptr(modelViewMatrix));
-	glm::vec3 lightDirectionEye = glm::mat3(viewMatrix) * lightDirectionWorld;
-	glUniform3fv(watercolorInfo.abstractionShader->getVariableLocation("lightDirection"), 1, glm::value_ptr(lightDirectionEye));
-	std::vector<Mesh*>::const_iterator it2 = m_Meshes.begin();
-	for (; it2 != m_Meshes.end(); ++it2)
-	{
-		glUniform4fv(watercolorInfo.abstractionShader->getVariableLocation("diffuse"), 1, glm::value_ptr((*it2)->m_Material.diffuse));
-		glUniform4fv(watercolorInfo.abstractionShader->getVariableLocation("ambient"), 1, glm::value_ptr((*it2)->m_Material.ambient));
-		(*it2)->render(watercolorInfo.abstractionShader);
-	}
-
-	/////////////////////////////////////////////////////
-	// Bind to default framebuffer again and draw the 
-	// quad plane with attched screen texture.
-	// //////////////////////////////////////////////////
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	// Clear all relevant buffers
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set clear color to white (not really necessery actually, since we won't be able to see behind the quad anyways)
-	glClear(GL_COLOR_BUFFER_BIT);
-	glDisable(GL_DEPTH_TEST); // We don't care about depth information when rendering a single quad
-
-	// Draw Screen
-	glUseProgram(watercolorInfo.watercolorShader->m_Id);
-	glBindVertexArray(watercolorInfo.quadVAO);
-	
-	glActiveTexture(GL_TEXTURE0);
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("screenTexture"), 0);
-	glBindTexture(GL_TEXTURE_2D, watercolorInfo.textureColorBuffer);	// Use the color attachment texture as the texture of the quad plane
-	glActiveTexture(GL_TEXTURE0 + 1);
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("pigmentTexture"), 1);
-	glBindTexture(GL_TEXTURE_2D, watercolorInfo.pigmentTexture);
-	glActiveTexture(GL_TEXTURE0 + 2);
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("turbulenceTexture"), 2);
-	glBindTexture(GL_TEXTURE_2D, watercolorInfo.turbulenceTexture);
-	glActiveTexture(GL_TEXTURE0 + 3);
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("paperTexture"), 3);
-	glBindTexture(GL_TEXTURE_2D, watercolorInfo.paperTexture);
-	
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("pixelWidth"), 1, &watercolorInfo.pixelWidth);
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("pixelHeight"), 1, &watercolorInfo.pixelHeight);
-
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("offsetX"), 1, &watercolorInfo.kernelOffsetX);
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("offsetY"), 1, &watercolorInfo.kernelOffsetY);
-
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("brushThreshold"), 1, &watercolorInfo.brushThreshold);
-	glUniform3fv(watercolorInfo.watercolorShader->getVariableLocation("brushColor"), 1, glm::value_ptr(watercolorInfo.brushColor));
-
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("scaleFactorPigment"), 1, &watercolorInfo.scaleFactorPigment);
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("scaleFactorTurbulence"), 1, &watercolorInfo.scaleFactorTurbulence);
-	glUniform1fv(watercolorInfo.watercolorShader->getVariableLocation("scaleFactorPaper"), 1, &watercolorInfo.scaleFactorPaper);
-
-
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("enableBrush"), (watercolorInfo.enableBrush ? 1 : 0));
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("enableWobble"), (watercolorInfo.enableWobble ? 1 : 0));
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("enableEdgeDarkening"), (watercolorInfo.enableEdgeDarkening ? 1 : 0));
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("enablePigment"), (watercolorInfo.enablePigment ? 1 : 0));
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("enableTurbulence"), (watercolorInfo.enableTurbulence ? 1 : 0));
-	glUniform1i(watercolorInfo.watercolorShader->getVariableLocation("enablePaper"), (watercolorInfo.enablePaper ? 1 : 0));
-	//uniform bool enableBrush, enableWobble, enableEdgeDarkening, enablePigment, enableTurbulence, enablePaper;
-
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-	glBindVertexArray(0);
-	
-}
-
-
 
 void Model::changeShader(ShaderProgram *shaderProgram)
 {
@@ -525,7 +434,7 @@ void Model::processNode(const aiNode* node)
 		resultMesh->createVAO(m_ShaderProgram);
 
 		//allrighty. what is this, you ask. Even static meshes can have a transformation in their corresponding assimp Node. It was an oversight of me to ignore this transformation when designing the class so the following is a patch up
-		bakeTransform(resultMesh,node);
+		//bakeTransform(resultMesh,node);
 		m_Meshes.push_back(resultMesh);
 
 	}

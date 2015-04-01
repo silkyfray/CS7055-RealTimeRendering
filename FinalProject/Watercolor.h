@@ -1,12 +1,13 @@
 #pragma once
 #include "precompiled.h"
+#include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <glm/glm.hpp>
 
 class ShaderProgram;
 struct WatercolorInfo
 {
-	ShaderProgram *abstractionShader;
+	//ShaderProgram *abstractionShader;
 	ShaderProgram *watercolorShader;
 	GLuint quadVAO;
 	GLuint frameBuffer;
@@ -23,4 +24,7 @@ struct WatercolorInfo
 	float scaleFactorPaper;
 
 	bool enableBrush, enableWobble, enableEdgeDarkening, enablePigment, enableTurbulence, enablePaper;
+
+
+	void render() const;
 };

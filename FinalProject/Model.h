@@ -44,7 +44,7 @@ public:
 	virtual void renderNormalMap(ShaderProgram *shader, const glm::mat4 &modelMatrix, const glm::mat4 &viewMatrix, const glm::mat4 &projectionMatrix, glm::vec3 lightDirectionWorld, glm::vec3 lightIntensity, bool renderDiffuse, bool renderNormalMap) const;
 	virtual void renderReflectRefractNormalMap(ShaderProgram *shader, const CubeMap &cubeMap, const glm::mat4 &modelMatrix, const glm::mat4 &viewMatrix, const glm::mat4 &projectionMatrix, glm::vec3 lightDirectionWorld,
 		float eta[3], float fresnel, /*normal map stuff*/glm::vec3 lightIntensity, float mixRRfactor) const;
-	virtual void renderWatercolor(const WatercolorInfo &watercolorInfo, const glm::mat4 &modelMatrix, const glm::mat4 &viewMatrix, const glm::mat4 &projectionMatrix, glm::vec3 lightDirectionWorld) const;
+	//virtual void renderWatercolor(const WatercolorInfo &watercolorInfo, const glm::mat4 &modelMatrix, const glm::mat4 &viewMatrix, const glm::mat4 &projectionMatrix, glm::vec3 lightDirectionWorld) const;
 	ShaderProgram* getShaderProgram() const;
 	void changeShader(ShaderProgram *shaderProgram);
 	void setMaterialRoughness(float value);

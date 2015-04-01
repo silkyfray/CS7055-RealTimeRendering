@@ -32,6 +32,6 @@ void main() {
 		else
 		    intensity = 0.01f;
     }
-    colorOut = max(intensity *  finalDiffuse, ambient);
+    colorOut = max(intensity *  finalDiffuse, 0.2 * finalDiffuse);
     //colorOut = vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }
