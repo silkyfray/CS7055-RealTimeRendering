@@ -11,3 +11,7 @@ Lab 2
 Lab 3
 --------
 [Youtube video](https://www.youtube.com/watch?v=erhHqXGUOZ0).
+
+Final Project
+--------
+[Youtube video](https://youtu.be/PO0V5WqseoU).
